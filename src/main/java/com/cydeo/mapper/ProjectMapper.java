@@ -3,7 +3,9 @@ package com.cydeo.mapper;
 import com.cydeo.dto.ProjectDTO;
 import com.cydeo.entity.Project;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ProjectMapper {
 
     private final ModelMapper modelMapper;
@@ -13,9 +15,13 @@ public class ProjectMapper {
         this.modelMapper = modelMapper;
     }
 
-    public ProjectDTO convertToDto(Project enitity){
+    public Project convertToEntity(ProjectDTO dto){
+        return modelMapper.map(dto,Project.class);
 
-        return modelMapper.map(enitity,ProjectDTO.class);
+    }
+    public ProjectDTO convertToDto(Project entity){
+
+        return modelMapper.map(entity,ProjectDTO.class);
     }
 
 

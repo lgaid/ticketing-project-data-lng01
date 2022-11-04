@@ -13,7 +13,6 @@ public class UserMapper {
     private final ModelMapper modelMapper;
 
 
-
     public UserMapper(ModelMapper modelMapper) {
         this.modelMapper = modelMapper;
     }

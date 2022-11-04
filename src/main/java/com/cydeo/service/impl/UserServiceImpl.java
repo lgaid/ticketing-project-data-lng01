@@ -42,6 +42,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void save(UserDTO user) {
 
+        userRepository.save(userMapper.convertToEntity(user));
     }
 
     @Override
@@ -68,9 +69,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void delete(String username) {
-        // go to db and get that user with user name
-        // change the isDeleted field to true
-        // save the object in the db
 
         User user = userRepository.findByUserName(username);
         user.setIsDeleted(true);
@@ -79,7 +77,15 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    @Override
+    public List<UserDTO> listAllByRole(String role) {
 
+        List<User> users = userRepository.findByRoleDescriptionIgnoreCase(role);
+
+
+        return users.stream().map(userMapper::convertToDto).collect(Collectors.toList());
+
+    }
 
 
 }
