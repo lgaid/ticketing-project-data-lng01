@@ -8,13 +8,12 @@ import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-
+@Entity
+@Table(name = "tasks")
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity
-@Table(name = "tasks")
-@Where(clause = "is_delete=false")
+@Where(clause = "is_deleted=false")
 public class Task extends BaseEntity{
 
 
